@@ -1,20 +1,32 @@
 <?php
-    include_once 'calculations.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>What type of data you want to see?</h1>
-<form method="post">
-<input type="submit" name="decoded" value="Decoded"/>
-<input type="submit" name="notDecoded" value="Not Decoded"/>
+include_once 'calculations.php';
+include_once 'templates/display_results.tpl.php';
 
-</form>
-</body>
-</html>
+if (isset($_POST['decoded'])) {
+    echo "<table style='position:absolute; top:150px;'>
+        <tr style='background-color:lime'>
+            <th>Izveidošanas laiks</th>
+            <th>GPS</th>
+            <th>IO Dati</th>
+        </tr>
+        <tr>
+            <td>" . date("Y-m-d H:i:s") . "</td>" .
+            "<td>" . $longitude . ", " . $latitude . "</td>" .
+            "<td>" . $decodedIoElements . "</td>" .
+        "</tr>
+    </table>";
+}
+if (isset($_POST['notDecoded'])) {
+    echo "<table style='position:absolute; top:150px;'>
+        <tr style='background-color:lime'>
+            <th>Izveidošanas laiks</th>
+            <th>GPS</th>
+            <th>IO Dati</th>
+        </tr>
+        <tr>
+            <td>" . date("Y-m-d H:i:s") . "</td>" .
+            "<td>" . $hexLongitude . ", " . $hexLatitude . "</td>" .
+            "<td>"  . $notDecodedIoElements . "</td>" .
+        "</tr>
+    </table>";
+}
