@@ -1,6 +1,7 @@
 <?php
 include_once 'calculations.php';
 include_once 'templates/display_results.tpl.php';
+include_once 'models/Converter.php';
 
 if (isset($_POST['decoded'])) {
     echo "<table style='position:absolute; top:150px;'>
